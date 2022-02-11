@@ -34,8 +34,9 @@ export default function Homepage({setIsAdd}) {
         await axios.delete(`http://localhost:9000/homepage/${id}/${blogid}`)
         .then(res => {
             alert(res.data.message)
+            getCandidate();
         })
-        getCandidate();
+        
     }
     
     const getCandidate = async() => {

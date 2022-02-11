@@ -102,16 +102,16 @@ app.get("/homepage/:id/:blogid", async (req,res) => {
 })
 
 
-app.delete("/homepage/:id/:blogid", async (req,res) => { 
+app.delete("/homepage/:id/:blogid", async (req,res) => {  
     const {id, blogid} = req.params
     // console.log(req.params);
     let cand = await Blog.findOne({ _id : blogid});
-    if(cand.userid===id || id=="620547bf237c6469d9aa0f16") { 
+    if((id==="620547bf237c6469d9aa0f16" || cand.userid===id)) { 
         await Blog.deleteOne({ _id: blogid});
          res.send({ message: "Successfully deleted"})
-    } else {
-        res.send({message: "Not Allowed"})
-    }
+    } else {  
+        res.send({message: "Not Allowed"}) 
+    }  
     
 })
 
