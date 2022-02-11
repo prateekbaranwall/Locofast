@@ -3,18 +3,14 @@ import cors from "cors"
 import mongoose from "mongoose"
 import { autoIncrement } from 'mongoose-plugin-autoinc';
 import bcrypt from 'bcrypt';
+import 'dotenv/config'
 
- 
 const app = express()
 app.use(express.json())
 app.use(express.urlencoded())
 app.use(cors())
-// ${process.env.REACT_APP_URL}
-// mongodb+srv://prateek_bd:prateek1234@cluster0.onsao.mongodb.net/
-// mongodb+srv://${process.env.REACT_APP_ID}@cluster0.onsao.mongodb.net/
-console.log(process.env.REACT_APP_ID)
-// mongoose.connect(`mongodb+srv://${process.env.REACT_APP_ID}@cluster0.onsao.mongodb.net/`, {
-mongoose.connect(`mongodb+srv://prateek_bd:prateek1234@cluster0.onsao.mongodb.net/locofast`, {
+console.log(process.env.ID)
+mongoose.connect(process.env.ID, {
     useNewUrlParser: true,
     useUnifiedTopology: true
 },(err)=>{
